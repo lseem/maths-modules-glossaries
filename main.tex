@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath,mathtools}
+
+\title{MA359 Glossary}
+\author{Team KnowHow and Luca}
+
+\begin{document}
+
+\maketitle
+
+\section{Week 1: Outer Measures}
+\textbf{Outer Measure} An Outer measure is a function $\mu^{*}: P(X) \rightarrow [0, \infty]$ such that the following three axioms are satisfied:
+\newline \textbf{(i)} $\mu^{*}(\emptyset) = 0$
+\newline \textbf{(ii)} $A \subseteq B$ $\Rightarrow$ $\mu^{*}(A) \leq \mu^{*}(B)$
+\newline \textbf{(iii)} if $\{A_n\}_{n=1}^{\infty}$ is a sequence of subsets of $X$, then we have \[ \mu^{*}(\bigcup\limits_{n=1}^{\infty}A_n) \leq \sum_{n=1}^{\infty} \mu^{*}(A_n) \]
+\section{Week 2: Sigma Algebra}
+\textbf{Measurability} Let $\mu^{*}$ be an outer measure on $X$. We say $B$ such that $B \subset X$ is measurable if $\mu^{*}(A) = \mu^{*}(A \cap B) + \mu^{*}(A \cap B^{c})$ for all $A$ such that $A \subseteq X$.
+\newline \newline \textbf{$\sigma-$algebra} A collection of sets $\mathcal{A} \subseteq P(X)$  is a $\sigma$-algebra if it has the following properties:
+\newline \textbf{(i)} $X \in \mathcal{A}$
+\newline \textbf{(ii)} $A \in \mathcal{A}$ $\Rightarrow$ $A^{c} \in \mathcal{A}$
+\newline \textbf{(iii)} For every countable sequence of sets $\{A_i\}_{i=1}^{\infty}$, the union of these sets is also in $\mathcal{A}$. i.e. $\mu^{*}(\bigcup\limits_{n=1}^{\infty}A_n)$ $\in \mathcal{A}$
+\section{Week 3: Measures}
+\textbf{Measure} In general a measure $\mu$ is a function of a $\sigma$-algebra $\mathcal{A}$ such that $\mu(\emptyset) = 0$ and $\mu$ is countably additive, i.e. $\mu(\bigcup\limits_{n=1}^{\infty}A_n) = \sum_{n=1}^{\infty} \mu(A_n)$ when $A_n$ are all disjoint sets.
+\newline \newline \textbf{Measure Space and Measurable Space} $(X, \mathcal{A}, \mu)$ is a measure space, $(X, \mathcal{A})$ is a measurable space. (Domain set $X$, $\sigma$-algebra $\mathcal{A}$ and measure $\mu$).
+\newline \newline \textbf{Measure Continuity} If $A_k$ is an increasing sequence of sets in $\mathcal{A}$ then $\mu(\bigcup\limits_{k=1}^{\infty}A_k) = \lim_{k\to\infty} \mu(A_k)$
+\newline If $A_k$ is an decreasing sequence of sets in $\mathcal{A}$ then $\mu(\bigcap\limits_{k=1}^{\infty}A_k) = \lim_{k\to\infty} \mu(A_k)$
+\newline \newline \textbf{Translation Invariance} A measure is translation invariant: $\mu(A + h)$ = $\mu(A)$
+\section{Week 4: Measureable Functions}
+\textbf{Measurable Function} If $A \subset X$ and $A \in \mathcal{A}$ function $f: A \rightarrow [-\infty, +\infty]$, then the conditions
+\newline (a) for all $t \in \mathbb{R}$ the set $\{ x \in A : f(x) \leq t \}$
+\newline (b) for all $t \in \mathbb{R}$ the set $\{ x \in A : f(x) \leq t \}$
+\newline (c) for all $t \in \mathbb{R}$ the set $\{ x \in A : f(x) \geq t \}$
+\newline (d) for all $t \in \mathbb{R}$ the set $\{ x \in A : f(x) \leq t \}$
+\newline are equivalent
+\newline \newline \textbf{Simple Functions} A simple function is a function of the form $f = \sum\limits_{i=0}^N a_i\chi_{A_i}$ where $a_i$ are non-negative real numbers and $A_i$ are disjoint subsets of $X$.
+\newline \newline \textbf{Integral of a simple Functions} The integral of a simple function with respect to measure $\mu$ is $\int f \,d\mu$ = $\sum\limits_{i=0}^N a_i\mu(A_i)$
+\newline \newline \textbf{For any non-negative function, there is a sequence of simple functions such that the limit of the sequence is our original function}
+\section{Week 5: Integrable Functions}
+\textbf{Integral of a non-negative function} $\int f \,d\mu$ = $\sup\{ \int g \,d\mu : g$ is simple and $g \leq f \}$
+\newline \newline \textbf{Integral of a function} $\int f \,d\mu$ = $\int f^{+} \,d\mu$ + $\int f^{-} \,d\mu$ where $f^{+} = \max\{0, f\}$ and $f^{-} = \max\{0, -f\}$
+\newline \newline \textbf{The integral of simple functions, the integral of a non-negative function and the integral of a function are all linear functionals}
+\newline \newline \textbf{BTEC Monotone convergence theorem} if we have a monotone sequence of simple functions $f_i$ that converge pointwise to a measurable function $f$, then the sequence of the integrals of $f_i$ converges to the integral of $f$ (integral with respect to $\mu$
+\section{Week 6: Integration Theorems}
+\textbf{Monotone Convergence Theorem} Let $f_i$ be a monotone (increasing) sequence of measurable functions that converge to measurable function $f$. Then $\int f \,d\mu$ = $\lim_{i\to\infty} \int f_i \,d\mu$
+\newline \newline \textbf{Beppo Levi's Theorem} Let $(X, \mathcal{A}, \mu)$ be a measure space, then \[ \int \sum\limits_{i=1}^{\infty}f_i \,d\mu = \sum\limits_{i=1}^{\infty} \int f_i \,d\mu \]
+\newline \newline \textbf{Fatou's Lemma} Let $(X, \mathcal{A}, \mu)$ be a measure space and let $\{ f_i \}$ be a sequence of $[-\infty, \infty]$ valued $\mathcal{A}$-measurable functions on $X$. Then \[ \int \liminf_{i\to\infty} f_i(x) \leq  \liminf_{i\to\infty} \int f_i(x)\]
+\newline \newline \textbf{Dominated Convergence Theorem} Let $(X, \mathcal{A}, \mu)$ be a measure space. Let $g$ be an integrable function on $X$ and let $f_i$ be a sequence of $[-\infty, \infty]$ valued $\mathcal{A}$-measurable functions such that the sequence converges to $f$ and $|f_i(x)| \leq g(x)$ for all $n \in \mathbb{N}$. Then $f$ and $f_i$ are integrable and $\int f \,d\mu$ = $\lim_{i\to\infty} \int f_i \,d\mu$.
+\newline \newline \textbf{Markow's inequalty} If we have the set $A_t$ = $\{ x \in X : f(x) \geq t \}$ then $\mu(A_k) \leq \frac{1}{t} \int_{A_t} f d\mu \leq \frac{1}{t} \int f d\mu$.
+\newline \newline \textbf{Link to Reimann Integrals} Let $[a,b]$ be a closed and bounded interval and let $f$ be a bounded real valued function on $[a,b]$. Then
+\newline (a) $f$ is Riemann integrable if and only if it is continuous almost everywhere on $[a,b]$.
+\newline (b) if $f$ is Riemann integrable then $f$ is Lebesgue integrable and the integrals coincide.
+\section{Week 7: Modes of Convergence}
+ \textbf{Convergence in Measure} Sequence of $\mathcal{A}$-measurable functions valued on $[-\infty, \infty]$ $f_i$ converge to $f$ in measure if for any $\epsilon > 0$, $\lim_{i\to\infty}\mu(\{x \in X : |f_i(x) - f(x)| > \epsilon \}) = 0$
+ \newline \newline \textbf{Pointwise Convergence} A sequence of $\mathcal{A}$-measurable functions valued on $[-\infty, \infty]$ $f_i$ converge to $f$ pointwise if for every $x \in X$, $\lim_{i\to\infty} f_i(x) = f(x)$
+ \newline \newline \textbf{Pointwise Convergence almost everywhere} Same as above but the set of points that fail make up a set of measure zero.
+ \newline \newline \textbf{Convergence in mean} A sequence of $\mathcal{A}$-measurable functions valued on $[-\infty, \infty]$ $f_i$ converge to $f$ in mean if $ \lim_{i\to\infty}\int |f_i - f| \,d\mu = 0$
+ \newline \newline \textbf{Egeroff's Theorem} If $f_i$ converges pointwise to $f$ then for any $\epsilon > 0$ there is a subset $B$ of $X$ such that $f_i$ restricted to $B$ converges uniformally to $f$ restricted to $B$ and $\mu(B^c) < \epsilon$
+\section{Week 8: $L^{p}$ spaces}
+\textbf{$L^{p}$ spaces} The vector space $L^{p}(X, \mathcal{A}, \mu)$ is the space of functions such that $(\int_X |f|^p \,d\mu)^{\frac{1}{p}}$, factored by the equivalence classes of functions that are equal a.e. i.e. $f \sim g$ iff $f(x) = g(x)$ almost everywhere.
+\newline \newline (NB, if $|f-g|_{p} = 0$, this only implies $f = g$ almost everywhere due to the definition of this norm. $L^p$ is also complete, so any Cauchy sequence of functions will have a limit in $L^p$
+\newline \newline \textbf{Young's Inequality} If $\frac{1}{p} + \frac{1}{q} = 1$ $x^{\frac{1}{p}}y^{\frac{1}{q}} \leq \frac{x}{p} + \frac{y}{q}$
+\newline \newline \textbf{Holder's Inequality} Assume $\frac{1}{p} + \frac{1}{q} = 1$ and $p > 1$, If $f \in L^p$ and $g \in L^q$, then $\int fg \,d\mu \leq |f|_p|g|_q$
+\newline \newline \textbf{Minkowski's Inequality} Basically traingle rule for the $L^p$ norm
+\section{Week 9: Product Sigma Algebras}
+\textbf{Dynkin Systems} A family $\mathcal{D}$ of sets is a d-system if it satisfies axioms (i) and (ii) of a $\sigma-$algebra and (iii) if $A_n$ is an increasing sequence of sets in $\mathcal{D}$, then $\bigcup\limits_{n=1}^{\infty} A_n$ is in $\mathcal{D}$ as well.
+\newline \newline \textbf{$\pi$-system} Same as a $\sigma$-algebra but with finite union instead of countable union for axiom (iii).
+\newline \newline \textbf{Dynkin's Theorem} Let $X$ be a set and $\mathcal{C}$ be a $\pi$-system on $X$. Then the $\sigma$-algebra generated by $\mathcal{C}$ coincides with the d-system generated by $\mathcal{C}$.
+\newline \newline \textbf{Agreement on Generators} Let $(X, \mathcal{A})$ be a measurable space and let $\mathcal{C}$ be a $\pi$-system such that $\mathcal{A} = \sigma(\mathcal{C})$. If $\mu$ and $\nu$ are measures on $(X, \mathcal{A})$ that satisfy $\mu(X) = \nu(X) < \infty$ and $\mu(C) = \nu(C)$ for $C \in \mathcal{C}$ then $\mu = \nu$.
+\newline \newline \textbf{Product Sigma Algebra} Let $(X_1,\mathcal{A}_1)$ and $(X_2,\mathcal{A}_2)$ be two measurable spaces. Then, the family of sets $\mathcal{A}_1 \otimes \mathcal{A}_2 := \sigma(\{A_1 \times A_2: A_1 \in \mathcal{A}_1$ and $A_2 \in \mathcal{A}_2 \})$. is called the product $\sigma$-algebra.
+\newline \newline \textbf{Product Measure (Note - this is a theorem and not a definition} Given two measure spaces $(X_1,\mathcal{A}_1, \mu_1)$ and $(X_2,\mathcal{A}_2, \mu_2)$ where the measure spaces are $\sigma-$finite. Then there exists a unique measure $\mu_1 \otimes \mu_2$: $(\mathcal{A}_1, \mathcal{A}_2) \rightarrow [0, \infty]$ such that $(\mu_1 \otimes \mu_2)(A_1 \times A_2) = \mu_1(A_1)\mu_2(A_2)$ for all sets $A_1$, $A_2$ in $\mathcal{A_1}$, $\mathcal{A_2}$ respectively. This is called the product measure.
+\newline \newline Futhermore, for each $E \in \mathcal{A}_1 \otimes \mathcal{A}_2$, the function $x \rightarrow \mu_2(E_x)$ where $E_x := \{ y \in X_2 : (x,y) \in E \}$ is measurable
+\newline and the function $y \rightarrow \mu_1(E_y)$ where $E_x := \{ x \in X_1 : (x,y) \in E \}$ is measurable.
+\newline We also have: ($\mu_1 \otimes \mu_2$)($E$) = $\int_{X_1} \mu_2(E_x) \,d\mu_1(x)$ = $\int_{X_2} \mu_1(E_y) \,d\mu_2(x)$ for all $E \in \mathcal{A}_1 \times \mathcal{A}_2$.
+\section{Week 10: Fubini's Theorem}
+\textbf{Fubini's Theorem Part 1} Let $(X_1,\mathcal{A}_1, \mu_1)$ and $(X_2,\mathcal{A}_2, \mu_2)$ be measure spaces which are $\sigma-$finite.
+\newline let $f: X_1 \times X_2 \rightarrow [0, \infty]$ be an $\mathcal{A}_1 \times \mathcal{A}_2$ measurable function. Then $x \rightarrow \int f_x \,d\mu_2$ is $\mathcal{A}_1$ measurable and $y \rightarrow \int f_y \,d\mu_1$ is $\mathcal{A}_2$ measurable. \newline Furthermore, $\int_{X \times Y} f \,d(\mu_1 \times \mu_2) = \int_X (\int_Y f_X \,d\mu_2) \,d\mu_1$ and $\int_{X \times Y} f \,d(\mu_1 \times \mu_2) = \int_Y (\int_X f_Y \,d\mu_1) \,d\mu_2$
+\newline \newline \textbf{Fubini's Theorem Part 2 - what is listed as Fubini in Cohn} Same hypotheses in part 1.
+\newline (a) $\mu_1$-a.e. $x \in X$ the section $f_X$ is $\mu_2$-integrable and for $\mu_2$-a.e. the section $f_Y$ is $\mu_1$-integrable
+\newline \newline (b) The fuctions
+    $ I_{f}(x) = \begin{cases}
+          \int_Y f_X \,d\mu_2 &$ if $f_X$ is $\mu_2$-integrable$\\
+          0 & $else$
+       \end{cases}
+    $
+\newline and
+    $ J_{f}(x) = \begin{cases}
+          \int_X f_Y \,d\mu_1 &$ if $f_Y$ is $\mu_1$-integrable$\\
+          0 & $else$
+       \end{cases}
+    $
+\newline then $I_f \in \mathcal{L}^{1}(X, \mu_1)$ and $J_f \in \mathcal{L}^{1}(Y, \mu_2)$
+\newline \newline (c) $\int_{X \times Y} f \,d(\mu_1 \times \mu_2) = \int_Y J_f \,d\mu_2 = \int_X I_f \,d\mu_1$
+\end{document}
+\end{document}
