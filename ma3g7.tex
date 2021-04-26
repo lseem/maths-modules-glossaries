@@ -1,0 +1,436 @@
+\documentclass[a4paper]{article}
+
+\usepackage{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm,thmtools,xcolor}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+
+\title{MA3G7 Functional Analysis 1}
+\author{Luca Seemungal}
+
+%% BEGIN PREAMBLE
+
+%% Theoremata
+\declaretheoremstyle[
+  headfont=\color{red}\normalfont\bfseries,
+  bodyfont=\color{red}\normalfont\itshape,
+]{thm}
+\declaretheorem[
+  style=thm,
+  name=Theorem,
+]{thm}
+
+%% Lemmata
+\declaretheoremstyle[
+  headfont=\color{black}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont\itshape,
+]{lemma}
+\declaretheorem[
+  style=lemma,
+  name=Lemma,
+]{lemma}
+
+%% Propositions
+\declaretheoremstyle[
+  headfont=\color{gray}\normalfont\bfseries,
+  bodyfont=\color{gray}\normalfont\itshape,
+]{prop}
+\declaretheorem[
+  style=prop,
+  name=Prop.,
+]{prop}
+
+%% Examples
+\declaretheoremstyle[
+  headfont=\color{blue}\normalfont\bfseries,
+  bodyfont=\color{blue}\normalfont\itshape,
+]{eg}
+\declaretheorem[
+  style=eg,
+  name=Example,
+]{eg}
+
+%% Definitions
+\declaretheoremstyle[
+  headfont=\color{green}\normalfont\bfseries,
+  bodyfont=\color{green}\normalfont,
+]{defn}
+\declaretheorem[
+  style=defn,
+  name=Defn.,
+]{defn}
+
+%% Exercises
+\declaretheoremstyle[
+  headfont=\color{pink}\normalfont\bfseries,
+  bodyfont=\color{pink}\normalfont,
+]{ex}
+\declaretheorem[
+  style=ex,
+  name=Exercise,
+]{ex}
+
+%% MACROS
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\integ}[4]{\int_{#1}^{#2}\!{#3}\,\mathrm{d}{#4}}
+\newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\oneover}[1]{\frac{1}{#1}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\renewcommand{\a}{\alpha}
+\renewcommand{\span}{\mathrm{span}}
+%% END PREAMBLE
+
+%% BEGIN DOCUMENT
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Vector Spaces}
+
+\begin{thm}
+  Every vector space has a Hamel basis.
+\end{thm}
+
+You don't need to prove the above theorem.
+
+\begin{thm}
+  If a vector space has a finite Hamel basis then every Hamel basis for this vector space has the same number of elements.
+\end{thm}
+
+\begin{prop}
+  Any $n$-dimensional vector space over a field $\F$ is isomorphic to $\F^n$.
+\end{prop}
+
+\begin{lemma}[Young's inequality]
+  If $a,b>0$, $1<p,q<\infty$, and $\frac{1}{p} + \frac{1}{q} = 1$, then
+  $$ ab \leq \frac{a^p}{p} + \frac{b^q}{q}.$$
+\end{lemma}
+
+\begin{lemma}[Hölder's inequality]
+  If $1\leq p,q\leq\infty$, $\oneover{p} + \oneover{q} = 1$, $x\in\ell^p(\F)$ and $y\in\ell^q(\F)$, then
+  $$\sum |x_jy_j| \leq \norm{x}_p\norm{y}_q.$$
+\end{lemma}
+
+\begin{lemma}[Minkowski's inequality]
+  Let $1\leq p<\infty$. If $x,y\in\ell^p(\F)$ then $x+y\in\ell^p(\F)$ and
+  $$\norm{x+y}_p \leq \norm{x}_p + \norm{y}_p.$$
+\end{lemma}
+
+\begin{ex}
+  $C(0,1)$ is not a subset of $L_c^1(0,1)$.
+\end{ex}
+
+\begin{ex}
+  A set $E$ is linearly independent iff for every subset $\{e_1,\ldots,e_n\}\subset E$, if $\a_1,\ldots,a_n\in\F$ and $\sum e_i\a_i = 0$, then $\a_1 = \cdots = \a_n = 0$.
+\end{ex}
+
+\begin{ex}
+  The functions
+  $$f_\a(x) =
+  \begin{cases}
+    x(\a - x) &\text{for }0\leq x\leq\a\\
+    0 &\text{for }\a\leq x\leq 1
+  \end{cases}$$
+\end{ex}
+
+\begin{ex}
+  If $L:V\to W$ is a linear isomorphism and $E\subset V$ is a Hamel basis for $V$, then $L(E)$ is a Hamel basis for $W$.
+\end{ex}
+
+\section{Normed spaces}
+
+\begin{prop}
+  Let $(W,\norm{\cdot}_W)$ be a normed space, $V$ be a vector space, and $L:V\to W$ a linear isomorphism. Then the function
+  $$V\ni x\mapsto \norm{L(x)}_W \in\R$$
+  defines a norm on $V$.
+\end{prop}
+
+\begin{prop}
+  Any finite dimensional vector space can be equipped with a norm. Therefore, any $n$-dimensional vector space over $\F$ is isometrically isomorphic to $\F^n$ equipped with a suitable norm.
+\end{prop}
+
+\begin{thm}
+  All norms on a finite dimensional space are equivalent.
+\end{thm}
+
+\begin{prop}
+If $f_n\in C[0,1]$ for all $n\in\N$ and $f_n\to f$ in the sup-norm, then $f_n\to f$ in the $L^1$-norm.
+\end{prop}
+
+\begin{prop}
+  If $\norm{\cdot}_1$ and $\norm{\cdot}_2$  are equivalent norms on a vector space, then for any sequence $x_n$ in the vector space and for any $x\in V$,
+  $$\norm{x_n-x}_1\to0 \iff \norm{x_n-x}_2\to0.$$
+\end{prop}
+
+\begin{lemma}
+  In a normed space $(V,\norm{\cdot})$, a sequence $x_n\to x$ if and only if for any open neighbourhood $X$ of $x$ there is an $N\in\N$ such that $x_n\in X$ for all $n>N$.
+\end{lemma}
+
+\begin{prop}
+  On a vector space $V$, two norms are equivalent if and only if they induce the same topology.
+\end{prop}
+
+\begin{lemma}
+  A subset $X\subset V$ is closed if and only if every convergent sequence with elements in $X$ has its limit in $X$.
+\end{lemma}
+
+\begin{prop}
+  A finite dimensional linear subspace $W$ of a normed space $V$ is closed.
+\end{prop}
+
+\begin{thm}[Heine-Borel]
+  A subset of $\R^n$ is compact if and only if it is closed and bounded. Therefore, a subset of a finite-dimensional vector space is closed if and only if it is bounded.
+\end{thm}
+
+You don't need to know the proof of this - but you should, as you studied it in Year 2.
+
+\begin{lemma}[Riesz' Lemma]
+  Let $X$ be a normed vector space an d$Y$ be a closed linear subspace of $X$ such that $Y\neq X$ and $\a\in(0,1)$. Then there is $x_\a\in X$ such that $\norm{x_\a}=1$ and $\norm{x_\a-y}>\a$ for all $y\in Y$.
+\end{lemma}
+
+\begin{thm}
+  A normed space is finite dimensional if and only if the unit sphere is compact.
+\end{thm}
+
+\begin{ex} Prove these things from Year 1:
+  \begin{enumerate}[(i)]
+    \item $x_n\to x$ if and only if $\norm{x_n-x}\to0$;
+    \item the limit of a convergent sequence is unique;
+    \item any convergent sequence is bounded;
+    \item if $x_n\to x$ then $\norm{x_n}\to\norm{x}$;
+    \item any convergent sequence is Cauchy.
+  \end{enumerate}
+\end{ex}
+
+\begin{ex}
+  A (sequentially) compact subset of a normed space is compact if and only if it is closed and bounded.
+\end{ex}
+
+\section{Banach spaces}
+
+\begin{thm}
+  A sequence of real numbers converges if and only if it is Cauchy.
+\end{thm}
+Proved in Year 1.
+
+\begin{thm}
+  Every finite-dimensional normed space is complete. In particular, $\R^n$ and $\C^n$ are complete.
+\end{thm}
+
+\begin{thm}
+  The space $\ell^p(\F)$ equipped with the $\ell^p$-norm is complete.
+\end{thm}
+
+\begin{thm}
+  The space $C[0,1]$ equipped with the sup-norm is complete.
+\end{thm}
+
+\begin{thm}[Bernstein polynomials]
+  Consider the polynomials
+  $$B_{np}(x) = \binom{n}{p}x^p(1-x)^{n-p}.$$
+  Then the polynomials $B_{np}$ are of degree $n$ and we have that
+  \begin{enumerate}[(i)]
+    \item $\sum_{p=0}^n B_{np}(x) = 1$\\
+    \item $\sum_{p=0}^n pB_{np}(x) = nx$\\
+    \item $\sum_{p=0}^n (p-nx)^2B_{np}(x) = nx(1-x)$.
+  \end{enumerate}
+\end{thm}
+
+\begin{thm}
+  If a function $f:[0,1]\to\R$ is continuous then the sequence of polynomials
+$$P_n(x) = \sum_{p=0}^n f\left(\frac{p}{n}\right)\binom{n}{p}x^p(1-x)^{n-p}$$
+  converges uniformly to $f$ on $[0,1]$.
+\end{thm}
+
+Therefore, $C[0,1]$ is separable.%TODO:CHECK!!
+
+\begin{thm}
+  Any normed space is isometrically isomorphic to a dense subset of a Banach space.
+\end{thm}
+
+\section{Lebesgue spaces}
+
+\begin{thm}[Monotone Convergence Theorem]
+  Suppose that $f_n$ are integrable functions, $f_n(x)\leq f_{n+1}(x)$ almost everywhere, and there is a constant $K$ such that for all $n$
+  $$\integ{X}{}{f_n(x)}{x}<K.$$
+  Then there is an integrable function $f$ such that $f_n\to f$ almost everywhere and
+  $$\integ{X}{}{g(x)}{x} = \lim_{n\to\infty}\integ{X}{}{f_n(x)}{x}.$$
+\end{thm}
+
+\begin{prop}
+  If $f$ is integrable and $\integ{X}{}{|f(x)|}{x}=0$ then $f(x)=0$ almost everywhere.
+\end{prop}
+
+\begin{thm}[Dominated Convergence Theorem]
+  Suppose that $f_n:X\to\R$ are integrable functions and $f_n(x)\to f(x)$ almost everywhere. If there is an integrable function $g$ such that $|f_n(x)|\leq g(x)$ for every $n$ and almost every $x$, then $f$ is integrable and
+  $$\integ{X}{}{f(x)}{x} = \lim_{n\to\infty}\integ{X}{}{f_n(x)}{x}.$$
+\end{thm}
+
+The Dominated Convergence theorem holds for complex-valued functions, and is easily proved from the above version for real-valued functions.
+
+\begin{thm}
+  $L^1(X)$ is a Banach space.
+\end{thm}
+
+\begin{lemma}
+  If $(V,\norm{\cdot})$ is anormed space in which $sum_{j=1}^\infty\norm{y_j}<\infty$ implies that $\sum_{j=1}^\infty y_j$ converges, then $V$ is complete.
+\end{lemma}
+
+\begin{lemma}
+  If $f_k$ is a sequence of Lebesgue-integrable functions such that
+  $$ K := \sum_{j=1}^\infty\norm{f_k}_1<\infty,$$
+  then
+  \begin{enumerate}[(i)]
+    \item there is an integrable function $g$ such that $\sum_{k=1}^n |f_k(x)| \to g(x)$ almost everywhere;
+    \item there is an integrable function $h$ such that $\sum_{k=1}^n f_k(x) \to h(x)$ almost everywhere;
+    \item $\norm{h(x)-\sum_{k=1}^n f(x)}_1\to0$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{thm}
+  The space $C[0,1]$ is dense in $L^1[0,1]$. Therefore, $L^1[a,b]$ is isometrically isomorphic to the completion of $C[a,b]$ in the $L^1$-norm.
+\end{thm}
+
+\begin{thm}
+  $L^p(X)$ is a Banach space for any $p\in[1,\infty)$.
+\end{thm}
+
+\section{Inner product spaces}
+
+\begin{lemma}[Cauchy-Schwarz inequality]
+  If $V$ is an inner product space and $\norm{x}=\sqrt{\<x,x\>}$ for all $x\in V$, then for all $x,y\in V$,
+  $$|\<x.y\>|\leq\norm{x}\norm{y}$$
+\end{lemma}
+
+\begin{prop}
+  If $V$ is an inner product space, then the equation $\norm{x}=\sqrt{\<x,x\>}$ defines a norm on $V$.
+\end{prop}
+
+\begin{lemma}[Continuity of the inner product]
+  Let $V$ be an inner product space equipped ith the natural norm. If $x_n\to x$ and $y_n\to y$, then $\<x_n,y_n\>\to\<x,y\>$.
+\end{lemma}
+
+\begin{lemma}[Parallelogram law]
+  If $V$ is an inner product space with the natural norm $\norm{\cdot}$, then for all $x,y\in V$,
+  $$\norm{x+y}^2+\norm{x-y}^2 = 2(\norm{x}^2+\norm{y}^2).$$
+\end{lemma}
+
+\begin{lemma}[Polarisation identity]
+  Let $V$ be an inner product space with the natural norm $\norm{\cdot}$. If the vector space $V$ is real, then
+  $$ 4\<x,y\> = \norm{x+y}^2 - \norm{x-y}^2.$$
+  If the vector spcae $V$ is complex, then
+  $$ 4\<x,y\> = \norm{x+y}^2 - \norm{x-y}^2 + i\norm{x+i y}^2 - i\norm{x-i y}^2.$$
+\end{lemma}
+
+\begin{prop}
+  If $V$ is a real normed space with the norm $\norm{\cdot}$ satisfying the parallelogram law, then
+  $$\<x,y\> = \frac{\norm{x+y}^2 - \norm{x-y}^2}{4}$$
+  defines an inner product on V.
+\end{prop}
+
+\begin{thm}[Pythagoras]
+  If $x\perp y$ then $\norm{x+y}^2 = \norm{x}^2 + \norm{y}^2$.
+\end{thm}
+
+\begin{lemma}
+  If $\{e_1,\ldots,e_n\}$ is an orthonormal set in an inner product space $V$, then for any $\a_j\in\F$ we have
+  $$\norm{\sum_{j=1}^n\a_j e_j}^2 = \sum_{j=1}^n|\a_j|^2.$$
+\end{lemma}
+
+\begin{lemma}[Bessel's inequality]
+  If $V$ is an inner product spcae and $E=(e_k)$ is an orthonormal sequence, then for every $x\in V$
+  $$\sum_{k=1}^\infty|\<x,e_k\>|^2\leq\norm{x}^2.$$
+\end{lemma}
+
+\begin{prop}
+  If $E$ is an orthonormal set in an inner product space $V$ then for any $x\in V$ the set
+  $$\mathcal{E}_x := \{e\in E: \<x,e\>\neq0\}$$
+  is at most countable.
+\end{prop}
+
+\begin{lemma}[Gram-Schmidt orthonormalisation]
+  Let $V$ be an inner product space and $v_k$ be a sequence of linearly independent vectors in $V$. Then there is an orthonormal sequence $(e_k)$ such that for every $k$,
+  $$\span\{v_1,\ldots,\v_k\} = \span\{e_1,\ldots,e_k\}.$$
+\end{lemma}
+
+\begin{prop}
+  Any infinite-dimensional inner product space contains an orthonormal sequence.
+\end{prop}
+
+\begin{prop}
+  Any finite-dimensional inner product space has an orthonormal basis.
+\end{prop}
+
+\begin{prop}
+  Any finite-dimensional inner product space is isometrically isomorphic to $\C^n$ or $\R^n$ (if the space is complex or real respectively) equipped with the standard inner product.
+\end{prop}
+
+\section{Hilbert space}
+
+\begin{lemma}
+  Let $H$ be a Hilbert space and $E=(e_k)$ be an orthonormal sequence in $H$. The series $\sum_{k=1}^\infty \a_k e_k$ converges if and only if $\sum_{k=1}^\infty |\a_k|^2 < +\infty$. In this case, we have
+  $$\norm{\sum_{k=1}^\infty \a_k e_k}^2 = \sum_{k=1}^\infty|\a_k|^2.$$
+\end{lemma}
+
+\begin{prop}
+  If $H$ is a Hilbert space and $E = (e_k)$ is an orthonormal sequence, then for every $x\in H$ the series $\sum_{k=1}^\infty \<x,e_k\>e_k$ converges.
+\end{prop}
+
+\begin{prop}
+  Let $E={e_k}$ be an orthonormal set in a Hilbert space $H$. Then the following are equivalent:
+  \begin{itemize}
+    \item for every $x\in H$ there are $\a_k\in\F$ such that $x = \sum_{k=1}^\infty \a_k e_k$;
+    \item $x = \sum_{k=1}^\infty\<x,e_k\>e_k$ for all $x\in H$;
+    \item $\norm{x}^2 = \sum_{k=1}^\infty|\<x,e_k\>|^2$ for all $x\in H$;
+    \item if $\<x,e_k\>=0$ for all $\k\in\N$ then $x=0$;
+    \item the linear span of $E$ is dense in $H$.
+  \end{itemize}
+\end{prop}
+
+\begin{thm}
+  An infinite-dimensional Hilbert space is separable if and only if it has a countable orthonormal basis.
+\end{thm}
+
+\begin{thm}
+  Any infinite-dimensional separable Hilbert space over $\F$ is isometrically isomorphic to $\ell^2(\F)$.
+\end{thm}
+
+\begin{lemma}
+  If $A$ is a non-empty closed convex subset of a Hilbert space $H$, then for any $x\in H$ there is a unique $a^*\in A$ such that
+  $$\norm{x-a^*}=\inf_{a\in A}\norm{x-a}.$$
+\end{lemma}
+
+\begin{prop}
+  If $X\subset H$, then $X^\perp$ is a closed linear subspace of $H$.
+\end{prop}
+
+\begin{prop}
+  If $E\subset H$ then $E^\perp = (\span(E))^\perp = (\overline{\span}(E))^\perp$.
+\end{prop}
+
+\begin{thm}
+  If $U$ is a closed linear subspace of a Hilbert space $H$ then
+  \begin{enumerate}
+    \item $H = U\oplus U^\perp$;
+    \item $u$ is the closest point to $x$ in $U$;
+    \item the map $P_U:H\to U$ defined by $P_U(x)=u$ is linear, and for every $x\in H$ we have that $P_U^2(x)=P_U(x)$ and $\norm{P_U(x)}\leq\norm{x}$.
+  \end{enumerate}
+\end{thm}
+
+\begin{prop}
+  The map $P_U$ is an orthogonal projection onto $U$.
+\end{prop}
+
+\begin{prop}
+  If $U$ is a closed linear subspace of a Hilbert space $H$ and $E$ is an at most countable orthonormal subset in $U$ such that $\span(E)$ is dense in $U$, then
+  $$P_U(x) = \sum_{e_k\in E}\<x,e_k\>e_k.$$
+\end{prop}
+
+\end{document}
+%% END DOCUMENT
