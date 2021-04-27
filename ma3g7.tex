@@ -6,6 +6,7 @@
 \usepackage{amsthm,thmtools,xcolor}
 \usepackage{amsfonts}
 \usepackage{enumerate}
+\usepackage{hyperref}
 
 \title{MA3G7 Functional Analysis 1}
 \author{Luca Seemungal}
@@ -76,7 +77,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
+\renewcommand{\C}{\mathbb{C}}
 \newcommand{\integ}[4]{\int_{#1}^{#2}\!{#3}\,\mathrm{d}{#4}}
 \newcommand{\deriv}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
 \newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
@@ -87,8 +88,8 @@
 \renewcommand{\b}{\beta}
 \newcommand{\la}{\lambda}
 \newcommand{\s}{\sigma}
-\renewcommand{\span}{\mathrm{span}}
-\newcommand{\range}{\mathrm{range}}
+\renewcommand{\span}{\operatorname{span}}
+\DeclareMathOperator{\range}{range}
 \newcommand{\inv}{^{-1}}
 %% END PREAMBLE
 
@@ -127,27 +128,6 @@ You don't need to prove the above theorem.
   Let $1\leq p<\infty$. If $x,y\in\ell^p(\F)$ then $x+y\in\ell^p(\F)$ and
   $$\norm{x+y}_p \leq \norm{x}_p + \norm{y}_p.$$
 \end{lemma}
-
-\begin{ex}
-  $C(0,1)$ is not a subset of $L_c^1(0,1)$.
-\end{ex}
-
-\begin{ex}
-  A set $E$ is linearly independent iff for every subset $\{e_1,\ldots,e_n\}\subset E$, if $\a_1,\ldots,a_n\in\F$ and $\sum e_i\a_i = 0$, then $\a_1 = \cdots = \a_n = 0$.
-\end{ex}
-
-\begin{ex}
-  The functions
-  $$f_\a(x) =
-  \begin{cases}
-    x(\a - x) &\text{for }0\leq x\leq\a\\
-    0 &\text{for }\a\leq x\leq 1
-  \end{cases}$$
-\end{ex}
-
-\begin{ex}
-  If $L:V\to W$ is a linear isomorphism and $E\subset V$ is a Hamel basis for $V$, then $L(E)$ is a Hamel basis for $W$.
-\end{ex}
 
 \section{Normed spaces}
 
@@ -203,20 +183,6 @@ You don't need to know the proof of this - but you should, as you studied it in 
 \begin{thm}
   A normed space is finite dimensional if and only if the unit sphere is compact.
 \end{thm}
-
-\begin{ex} Prove these things from Year 1:
-  \begin{enumerate}[(i)]
-    \item $x_n\to x$ if and only if $\norm{x_n-x}\to0$;
-    \item the limit of a convergent sequence is unique;
-    \item any convergent sequence is bounded;
-    \item if $x_n\to x$ then $\norm{x_n}\to\norm{x}$;
-    \item any convergent sequence is Cauchy.
-  \end{enumerate}
-\end{ex}
-
-\begin{ex}
-  A (sequentially) compact subset of a normed space is compact if and only if it is closed and bounded.
-\end{ex}
 
 \section{Banach spaces}
 
