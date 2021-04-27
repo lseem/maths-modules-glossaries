@@ -5,3 +5,4 @@
 In this repo you will find glossaries of some Warwick maths modules. Currently, we have
 
 * MA359 Measure Theory
+* MA3G7 Functional Analysis 1
