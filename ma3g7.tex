@@ -83,7 +83,12 @@
 \newcommand{\<}{\langle}
 \renewcommand{\>}{\rangle}
 \renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\la}{\lambda}
+\newcommand{\s}{\sigma}
 \renewcommand{\span}{\mathrm{span}}
+\newcommand{\range}{\mathrm{range}}
+\newcommand{\inv}{^{-1}}
 %% END PREAMBLE
 
 %% BEGIN DOCUMENT
@@ -356,7 +361,7 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
 
 \begin{lemma}[Gram-Schmidt orthonormalisation]
   Let $V$ be an inner product space and $v_k$ be a sequence of linearly independent vectors in $V$. Then there is an orthonormal sequence $(e_k)$ such that for every $k$,
-  $$\span\{v_1,\ldots,\v_k\} = \span\{e_1,\ldots,e_k\}.$$
+  $$\span\{v_1,\ldots,v_k\} = \span\{e_1,\ldots,e_k\}.$$
 \end{lemma}
 
 \begin{prop}
@@ -388,7 +393,7 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
     \item for every $x\in H$ there are $\a_k\in\F$ such that $x = \sum_{k=1}^\infty \a_k e_k$;
     \item $x = \sum_{k=1}^\infty\<x,e_k\>e_k$ for all $x\in H$;
     \item $\norm{x}^2 = \sum_{k=1}^\infty|\<x,e_k\>|^2$ for all $x\in H$;
-    \item if $\<x,e_k\>=0$ for all $\k\in\N$ then $x=0$;
+    \item if $\<x,e_k\>=0$ for all $k\in\N$ then $x=0$;
     \item the linear span of $E$ is dense in $H$.
   \end{itemize}
 \end{prop}
@@ -431,6 +436,146 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
   If $U$ is a closed linear subspace of a Hilbert space $H$ and $E$ is an at most countable orthonormal subset in $U$ such that $\span(E)$ is dense in $U$, then
   $$P_U(x) = \sum_{e_k\in E}\<x,e_k\>e_k.$$
 \end{prop}
+
+\section{Dual Spaces}
+
+\begin{prop}
+  Let $V$ be a normed space over $\F$. A linear functional $f:V\to\F$ is continuous if and only if it is bounded.
+\end{prop}
+
+\begin{prop}
+  If $V$ is a normed space, then its dual space $V^*$ is a Banach space with the norm defined by $\norm{f}=\sup_{\norm{x}=1}|f(x)|$.
+\end{prop}
+
+\begin{thm}[Riesz Representation Theorem]
+  If $H$ is a Hilbert space over $\F$, then for any bounded linear functional $f:H\to\F$ there is a unique $y\in H$ such that for all $x\in H$,
+  $$f(x) = \<x,y\>.$$
+  Moreover, we have $\norm{f}_{H^*} = \norm{y}_H$.
+\end{thm}
+
+\begin{thm}
+  If $X$ is a compact metric space and $w:C(X)\to\R$ is a continuous linear functional, then there are two measures $\mu,\nu\in\mathcal{M}(X)$ such that for every $\phi\in C(X)$,
+  $$w(\phi) = w_\mu(\phi) - w_\nu(\phi),$$
+  where $ w_\mu(\phi) = \integ{X}{}{\phi(x)}{\mu(x)}$ and $w_\nu(\phi) = \integ{X}{}{\phi(x)}{\nu(x)}$.
+\end{thm}
+
+\begin{lemma}
+  A linear operator $A:V\to U$ is continuous if and only if it is bounded.
+\end{lemma}
+
+\begin{thm}
+  If $V$ is a normed space and $U$ is a Banach space, then $B(V,U)$ is a Banach space.
+\end{thm}
+
+\begin{prop}
+  If $A\in B(U,V)$ then $\ker(A)$ is a closed linear subspace of $V$.
+\end{prop}
+
+\begin{prop}
+  If $A:X\to X$ is bounded and $\la$ is its eigenvalue then $|\la|\leq\norm{A}_{op}$.
+\end{prop}
+
+\begin{lemma}
+  If $A:V\to U$ and $B:U\to V$ are linear operators such that $AB=I_U$ and $BA=I_V$, then $A$ and $B$ are both invertible and $B=A^{-1}$.
+\end{lemma}
+
+\begin{prop}
+  Let $V$ and $U$ be normed spaces and $A:V\to U$ be an invertible linear operator. The inverse operator $A^{-1}:U\to V$ is bounded if and only if there is a constant $c>0$ such that $\norm{Ax}\geq c\norm{x}$ for all $x\in V$.
+\end{prop}
+
+\begin{lemma}
+  Let $X$ be a Banach space and $T\in B(X,X)$. If $\norm{T}<1$, then $I-T$ is invertible, $(I-T)\inv\in B(X,X)$, $(I-T)\inv = I+T+T^2+T^3+\ldots$, and
+  $$\norm{(I-T)\inv}\leq \oneover{1-\norm{T}}.$$
+\end{lemma}
+
+\begin{prop}
+  Let $X$ be a Banach space, let $A:X\to X$ be an invertible linear operator and let $A,A\inv,B\in B(X,X)$. If $\norm{B}\norm{A\inv}<1$, then the operator $A+B$ invertible, its inverse operator is bounded, and
+  $$\norm{(A+B)\inv}\leq\frac{\norm{A\inv}}{1-\norm{A\inv}\norm{B}}.$$
+\end{prop}
+
+\begin{thm}
+  If $A:H\to H$ is a bounded linear operator on a Hilbert space $H$, then there is a unique bounded linear operator $A^*:H\to H$ such that for all $x,y\in H$,
+  $$\<Ax,y\> = \<x,A^*,y\>.$$
+  Moreover, $\norm{A^*}_{op} = \norm{A}_{op}$.
+\end{thm}
+
+\begin{lemma}[properties of adjoint operators]
+  If $A,B:H\to H$ are bounded operators on a Hilbert space $H$ and $\a,\b\in\C$, then
+  \begin{enumerate}
+    \item $(\a A+\b B)^* = \overline{\a}A^* + \overline{\b}B^*$;
+    \item $(AB)^* = B^*A^*$;
+    \item $(A^*)^* = A$;
+    \item $\norm{A^*A} = \norm{AA^*} = \norm{A}^2$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{thm}
+  Let $A$ be a self-adjoint operator on a Hilbert space $H$. Then all eigenvalues of $A$ are real and eigenvectors corresponding to distinct eigenvalues are orthogonal.
+\end{thm}
+
+\begin{prop}
+  If $H$ is a separable Hilbert space and $A:H\to H$ is a self-adjoint operator, then $\s_p(A)$ is at most countable.
+\end{prop}
+
+\begin{thm}
+  If $A$ is a bounded self-adjoint operator, then
+  \begin{enumerate}
+    \item $\<Ax,x\>$ is real for all $x\in H$;
+    \item $\norm{A}_{op} = \sup_{\norm{x}=1}|\<Ax,x\>|$.
+  \end{enumerate}
+\end{thm}
+
+\section{Introduction to Spectral Theory} 
+
+\begin{prop}
+  If a linear operator $A:X\to X$ is bounded and $\la\in\s(A)$, then $|\la|\leq\norm{A}_{op}$.
+\end{prop}
+
+\begin{prop}
+  If a linear operator $A:X\to X$ is bounded, then its resolvent set $R(A)$ is open and its spectrum $\s(A)$ is closed.
+\end{prop}
+
+\begin{lemma}
+  If $A:H\to H$ is a bounded linear operator on a Hilbert space $H$, then $\la\in\s(A)$ if and only if $\overline{\la}\in\s(A^*)$.
+\end{lemma}
+
+\begin{thm}
+  If $X$ is a normed space and $Y$ is a Banach space, then $K(X,Y)$ is a closed linear subspace in $B(X,Y)$.
+\end{thm}
+
+\begin{lemma}
+  If $T:H\to H$ is a compact self-adjoint operator on a Hilbert space $H$, then at least one of the real numbers $\norm{T}$ and $-\norm{T}$ is an eigenvalue of $T$.
+\end{lemma}
+
+\begin{prop}
+  If $T:H\to H$ is a compact self-adjoint operator on a Hilbert space $H$, then any eigenspace corresponding to a non-zero eigenvalue is finite-dimensional.
+\end{prop}
+
+\begin{thm}[Spectral Theorem for a compact self-adjoint operator]
+  Let $H$ be a Hilbert space and $T:H\to H$ be a compact self-adjoint operator.
+  \begin{enumerate}[(a)]
+    \item If $\dim\range(T)=N$ then $T$ and $N$ non-zero real eigenvalues $\la_1,\ldots,\la_N$ (not necessarily distinct). If $\dim H>N$, then $0$ is also an eigenvalue. Moreover, there is an orthonormal set of eigenvectors $e_1,\ldots,e_N$ such that $Te_k=\la_k e_k$, and for all $x\in H$
+      $$ Tx = \sum_{k=1}^N\la_k\<x,e_k\>e_k.$$
+    \item If $\dim\range(T)=\infty$, then $T$ has an infinite sequence $\la_k$ of non-zero real eigenvalues such that $\lim_k\la_k=0$. Moreover, there is an orthonormal sequence $e_k$ of eigenvectors such that $Te_k=\la_ke_k$ and for all $x\in H$,
+      $$Tx = \sum_{k=1}^\infty \la_k\<x,e_k\>e_k.$$
+  \end{enumerate}
+\end{thm}
+
+\begin{prop}
+  Let $H$ be an infinite-dimensional separable Hilbert space and let $T:H\to H$ be a compact self-adjoint operator. Then there is an orthonormal basis $E=\{e_k:k\in\N\}$ in $H$ such that $Te_k=\la_ke_k$ for all $k\in\N$ and for all $x\in H$,
+  $$Tx  =\sum_{k=1}^\infty\la_k\<x,e_l\>e_k.$$
+  Note that it is possible that $\la_k=0$ for some $k$.
+\end{prop}
+
+\begin{prop}
+  Finite rank self-adjoint operators on a Hilbet space $H$ are dense in the space of compact self-adjoint operators on $H$.
+\end{prop}
+
+\begin{thm}
+  If $H$ is a Hilbert space and $T:H\to H$ is a compact self-adjoint operator, then $\s(T)=\overline{\s_p(T)}$.
+\end{thm}
+
+\section{Sturm-Liouville problems}
 
 \end{document}
 %% END DOCUMENT
