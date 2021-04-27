@@ -78,6 +78,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\integ}[4]{\int_{#1}^{#2}\!{#3}\,\mathrm{d}{#4}}
+\newcommand{\deriv}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
 \newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
 \newcommand{\oneover}[1]{\frac{1}{#1}}
 \newcommand{\<}{\langle}
@@ -196,7 +197,7 @@ If $f_n\in C[0,1]$ for all $n\in\N$ and $f_n\to f$ in the sup-norm, then $f_n\to
 You don't need to know the proof of this - but you should, as you studied it in Year 2.
 
 \begin{lemma}[Riesz' Lemma]
-  Let $X$ be a normed vector space an d$Y$ be a closed linear subspace of $X$ such that $Y\neq X$ and $\a\in(0,1)$. Then there is $x_\a\in X$ such that $\norm{x_\a}=1$ and $\norm{x_\a-y}>\a$ for all $y\in Y$.
+  Let $X$ be a normed vector space and $Y$ be a closed linear subspace of $X$ such that $Y\neq X$ and $\a\in(0,1)$. Then there is $x_\a\in X$ such that $\norm{x_\a}=1$ and $\norm{x_\a-y}>\a$ for all $y\in Y$.
 \end{lemma}
 
 \begin{thm}
@@ -284,7 +285,7 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
 \end{thm}
 
 \begin{lemma}
-  If $(V,\norm{\cdot})$ is anormed space in which $sum_{j=1}^\infty\norm{y_j}<\infty$ implies that $\sum_{j=1}^\infty y_j$ converges, then $V$ is complete.
+  If $(V,\norm{\cdot})$ is a normed space in which $sum_{j=1}^\infty\norm{y_j}<\infty$ implies that $\sum_{j=1}^\infty y_j$ converges, then $V$ is complete.
 \end{lemma}
 
 \begin{lemma}
@@ -318,7 +319,7 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
 \end{prop}
 
 \begin{lemma}[Continuity of the inner product]
-  Let $V$ be an inner product space equipped ith the natural norm. If $x_n\to x$ and $y_n\to y$, then $\<x_n,y_n\>\to\<x,y\>$.
+  Let $V$ be an inner product space equipped with the natural norm. If $x_n\to x$ and $y_n\to y$, then $\<x_n,y_n\>\to\<x,y\>$.
 \end{lemma}
 
 \begin{lemma}[Parallelogram law]
@@ -329,7 +330,7 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
 \begin{lemma}[Polarisation identity]
   Let $V$ be an inner product space with the natural norm $\norm{\cdot}$. If the vector space $V$ is real, then
   $$ 4\<x,y\> = \norm{x+y}^2 - \norm{x-y}^2.$$
-  If the vector spcae $V$ is complex, then
+  If the vector space $V$ is complex, then
   $$ 4\<x,y\> = \norm{x+y}^2 - \norm{x-y}^2 + i\norm{x+i y}^2 - i\norm{x-i y}^2.$$
 \end{lemma}
 
@@ -349,7 +350,7 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
 \end{lemma}
 
 \begin{lemma}[Bessel's inequality]
-  If $V$ is an inner product spcae and $E=(e_k)$ is an orthonormal sequence, then for every $x\in V$
+  If $V$ is an inner product space and $E=(e_k)$ is an orthonormal sequence, then for every $x\in V$
   $$\sum_{k=1}^\infty|\<x,e_k\>|^2\leq\norm{x}^2.$$
 \end{lemma}
 
@@ -568,7 +569,7 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
 \end{prop}
 
 \begin{prop}
-  Finite rank self-adjoint operators on a Hilbet space $H$ are dense in the space of compact self-adjoint operators on $H$.
+  Finite rank self-adjoint operators on a Hilbert space $H$ are dense in the space of compact self-adjoint operators on $H$.
 \end{prop}
 
 \begin{thm}
@@ -576,6 +577,73 @@ The Dominated Convergence theorem holds for complex-valued functions, and is eas
 \end{thm}
 
 \section{Sturm-Liouville problems}
+
+Let $[a,b]\subset\R$, $p\in C^1[a,b]$ and $q\in C[a,b]$. Find all $\la\in\R$ such that the following linear ODE has a non-zero solution $u$ satisfying the boundary conditions $u(a)=u(b)=0$
+\begin{equation}\label{sl}
+  -\deriv{}{x}\left(p(x)\deriv{u(x)}{x}\right) + q(x)u(x) = \la u(x)
+\end{equation}
+
+This section is devoted to proving the following theorem:
+
+\begin{thm}
+  If $p\in C^1[a,b]$, $q\in C[a,b]$ are such that $p(x)>0$ and $q(x)\geq0$ for all $x\in[a,b]$, then
+  \begin{itemize}
+    \item the eigenvalues $\la_k$ of the Sturm-Liouville problem (\ref{sl}) form an unbounded monotone sequence of positive numbers;
+    \item the eigenvalues are simple;
+    \item the eigenfunctions form an orthonormal basis $e_k$ in $L^2[a,b]$.
+  \end{itemize}
+\end{thm}
+
+\begin{lemma}
+  Let $p\in C^1[a,b]$ and $q\in C^0[a,b]$. If $u_1,u_2\in C^2[a,b]$ satisfy the linear ODE
+  $$-(pu')'+qu=0,$$
+  then $W_p(u_1,u_2)=p(u_1'u_2-u_1u_2')$ is constant in $x\in[a,b]$.
+\end{lemma}
+
+\begin{lemma}
+  If $p\in C^1[a,b]$, $q\in C^0[a,b]$, and $p(x)>0$ for all $x\in[a,b]$, then the ODE
+  $$-(pu')'+qu=0$$
+  has two solutions $u_1,u_2\in C^2[a,b]$ such that $u_1(a)=0$ and $u_1'(a)=1$, and $u_2(b)=0$ and $u_2'(b)=1$. Moreover, if $q(x)\geq0$ for all $x\in[a,b]$, then $W_p(u_1,u_2)\neq0$.
+\end{lemma}
+
+\begin{lemma}[Green's function]
+  If $p\in C^1[a,b]$, $q\in C^0[a.b]$, $p(x)>0$ for all $x\in[a,b]$, and $u_1,u_2$ are solutions of the ODE
+  $$-(pu')'+qu=0$$
+  such that $u_1(a)=u_2(b)=0$ and $W_p(u_1,u_2)\neq0$ and
+  $$G(x,y) = \oneover{W_p(u_1,u_2)}\begin{cases}
+      u_1(x)u_2(y),\text{for }a\leq x<y\leq b\\
+      u_1(y)u_2(x),\text{for }a\leq y\leq x\leq b,
+  \end{cases}$$
+  then for any $f\in C^0[a,b]$ the function $u(x)=\integ{a}{b}{G(x,y)f(y)}{y}$ is $C^2[a,b]$ and satisfies both the  ODE
+  $$-(pu')'+qu=f$$
+  and the boundary conditions $u(a)=u(b)=0$.
+\end{lemma}
+
+\begin{thm}[the inverse operator $L\inv:C^0\to C_0^2$]
+  If $p\in C^1[a,b]$ and $q\in C[a,b]$ are such that $p(x)>0$ and $q(x)\geq0$ for all $x\in[a,b]$, then the linear operator $L:C_0^2\to C^0$, $L(u) = -(pu')'+qu$ is bijective. Moreover, there is a continuous function $G(x,y)$ such that for all $f\in C^0$
+  $$L\inv(f) = \integ{a}{b}{G(x,y)f(y)}{y}.$$
+\end{thm}
+
+\begin{thm}
+  If $G:[a,b]\times[a,b]\to\R$ is a continuous function of two variables, then the linear operator $A:L^2[a,b]\to L^2[a,b]$ defined by the equation
+  $$(Af)(x) = \integ{a}{b}{G(x,y)f(y)}{y}$$
+  is compact. Moreover, $A(f)$ is a continuous function.
+\end{thm}
+
+\begin{prop}[properties of $A$]
+  The above operator $A:L^2[a,b]\to L^2[a,b]$ has the following properties:
+  \begin{enumerate}
+    \item $A$ is a bounded self-adjoint operator;
+    \item $\range(A)$ is dense in $L^2(a,b)$;
+    \item $\ker(A)$ is trivial;
+    \item $A(C^0)=C_0^2$.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  A function $u$ is an eigenfunction of the Sturm-Liouville problem if and only if it is an eigenfunction of the operator $A$:
+  $$Lu = \la u \iff Au = \la\inf u.$$
+\end{prop}
 
 \end{document}
 %% END DOCUMENT
