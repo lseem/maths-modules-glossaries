@@ -1,0 +1,63 @@
+\section{Introduction}
+\section{Definitions By Lecture}
+\textbf{Lecture 1}
+\newline \newline Metric space, open set in a metric space, topological space, neighbourhood, basis of a topological space, product topology, subspace topology, continuous function, homeomorphism  
+\newline \newline \textbf{Lecture 2}
+\newline \newline \textbf{Definition 2.1} Let $X, Y$ be topological spaces. The \textit{disjoint union of $X$ and $Y$} is the topological space with underlying set $$X \sqcup Y = X \times \{0\} \cup Y \times \{1\},$$ and the topology whose basis contains sets of the form $U \times \{0\} \cup V \times \{1\}$ for $U \subset X$ and $V \subset Y$ open.
+\newline \newline \textbf{Definition 2.4} The \textit{quotient topology} on $X/E$ has as open sets those $V \subset X/E$ for which $q^{-1}(V) = \{x \in X | q(x) \in V \}$ is open.
+\newline \newline Note that a subset $V \subset X/E$ is open iff $$U \subset \bigcup_{[x]} [x]$$ is open in $X$. By definition, the quotient map is continuous.
+\newline \newline \textbf{Lecture 3}
+\newline \newline \textbf{Definition 3.1} A \textit{pair of spaces} $(X,A)$ consists of a topological space $X$ and a subspace $A \subset X$. If $A = \{x\}$ then we write $(X,x)$ and call this a \textit{pointed space}
+\newline \newline \textbf{Definition 3.3} A subset $A \subset X$ is a \textit{retract} of $X$ if there is a map $r: x \rightarrow A$ (the \textit{retraction}) such that the restriction $r|_A$ satisfies $$ r|_A = Id_A,$$ i.e. $r(a) = a$ for $a \in A$.
+\newline \newline \textbf{Definition 3.7} Let $(X,A)$ be a pair of spaces. $X$ \textit{deform retracts} to $A$ (and $A$ is called a \textit{deformation retract} of $X$) if there exists a one-parameter family of functions $f_t:X \rightarrow X, t \in I = [0,1]$ such that 
+\newline \newline $ f_0 = Id_X$, $f_1(X) = A$, $f_{t}|_A = Id_A$ throughout.
+\newline \newline \textbf{Definition 3.10} Let $x, Y$ be topological spaces and $I = [0,1]$. A map $$F:X \times I \rightarrow Y$$ is called a \textit{homotopy}. If $f_t(x) = F(x,t)$, then $F$ is called a \textit{homotopy} from $f_0$ to $f_1$. We say that two maps $f$ and $g$ are homotopic, written $f \simeq g$ if there exists a homotopy such that $f_0 = f$ and $f_1 = g$.
+\newline \newline \textbf{Definition 3.13} Let $X, Y$ be topological spaces. We say $X$ is \textit{homotopy equivalent} to $Y$ (written $X \simeq Y$) if there are maps \newline \newline $f: X \rightarrow Y$, $g: Y \rightarrow X$, \newline \newline such that $g \circ f \simeq Id_X$ and $f \circ g \simeq Id_Y$
+\newline \newline \textbf{Definition 3.18} A topological space $X$ is called \textit{contractible} if $X \simeq \{$pt$\}$ where pt is an arbitrary point.
+\newline \newline \textbf{Lecture 4}
+\newline \newline \textbf{Definition 4.1} Let $x,y \in X$. A \textit{path} from $x$ to $y$ is a map $f: I \rightarrow X$ with $f(0) = x$ and $f(1) = y$.
+\newline \newline \textbf{Definition 4.2} Let $f,g:I \rightarrow X$ be paths with $f(1) = g(0)$. The path $f \ast g: I \rightarrow X$ defined by $$f \ast g(t) = \begin{cases} 
+          f(2t) & t\leq \frac{1}{2} \\
+          g(2t-1) & t > \frac{1}{2}
+       \end{cases} $$ 
+is called the \textit{concatenation} of $f$ and $g$.
+\newline \newline \textbf{Definition 4.4} A topological space $X$ is called \textit{path connected} if for any two points $x, y \in X$, there exists a path $f: I \rightarrow X$ with $f(x) = 0$ and $f(y) = 1$.
+\newline \newline \textbf{Definition 4.6} Let $x,y \in X$ and let $f,g: I \rightarrow X$. Then $f$ is homotopic to $g$ relative to the boundary (or relative to the endpoints), written $f \simeq^{\partial} g$, if there is a homotopy $$F: I \times I \rightarrow X$$ with $f_0 = f$, $f_1 = g$ and for all $t$, $f_t(0) = x$ and $f_t(1) = y$.
+\newline \newline \textbf{Lecture 5}
+\newline \newline \textbf{Definition 5.1} Let $(x, x_0)$ be a pointed space. A loop is a path $f: I \rightarrow X$ with $f(0) = f(1) = x_0$.
+\newline \newline \textbf{Proposition 5.2} $(\pi_{1}(X,x_0), \bullet)$, called the $\textit{Fundamental Group}$ of the pointed space $(X, x_0)$. The unit element is the class [$e$] of the constant loop, and for every [$f$], the inverse [$f$]$^-1$ is the class [$\bar(f)$] where $\bar(f)(t) = f(1-t)$ is the inverse loop.
+\newline (NB: this is not a definition by name, but it contains the definition of the fundamental group so it is worth putting here).
+\newline \newline \textbf{Lecture 7}
+\newline \newline \textbf{Definition 7.1} A \textit{covering} is a map $p: \Tilde{X} \rightarrow X$ such that there exists an open cover $\{U_\alpha\}$ of $X$ such that for every $\alpha$, the preimage is a disjoint union of open sets $$ p^{-1}(U_\alpha) = \bigsqcup_{\beta}V_{\alpha}^{\beta}$$
+\newline \newline \textbf{Definition 7.4} A covering $p: \Tilde{X} \rightarrow X$ is an \textit{n-fold covering} if for all $x \in X, p^-1(x)$ contains precisely $n$ points.
+\newline \newline \textbf{Definition 7.5} Two coverings $p: Y \rightarrow X$ and $q: Z \rightarrow X$ are called \textit{isomorphic}, if there exists homeomorphism $h:Y \rightarrow Z$ such that $p = q \circ h$.
+\newline \newline \textbf{Definition 7.8} Let $p: \Tilde{X} \rightarrow X$ be a covering. A \textit{deck transformation} is a homeomorphism $\tau: \Tilde{X} \rightarrow \Tilde{X}$ such that $p \circ \tau = p$, i.e. $\tau$ gives rise to an isomorphism of a covering to itself. The set of all deck transformations of a cover is called $Deck(p)$.
+\newline \newline \textbf{Lecture 8} 
+\newline \newline \textbf{Definition 8.1} Given a covering $p: \Tilde{X} \rightarrow X$, a \textit{lift} of $f: Y \rightarrow X$ is a map $\Tilde{f}: Y \rightarrow \Tilde{X}$ such that $f = p \circ \Tilde{f}$.
+\newline \newline \textbf{Definition 8.5} Let $p: Z \rightarrow X$ be a map. Then $p$ has the \textit{homotopy lifting property (HLP)} if given a homotopy $F: Y \times I \rightarrow X$ and a lift $g: Y \times \{0\} \rightarrow Z$ of $f_0$, so that $f_0 = p \circ g$, there exists a unique homotopy $\Tilde{F}: Y \times I \rightarrow Z$ such that
+\newline \newline (i) $\Tilde{f}_0 = g$;
+\newline \newline (ii) $p \circ \Tilde{F} = F$.
+\newline \newline \textbf{Definition 8.6} Let $p: Z \rightarrow X$ be a map. Then $p$ satisfies the homotopy lifting property lifting for paths, or the \textit{Path Lifting Property (PLP)}, if for any path $f: I \rightarrow X$ with $f(0) = x_0$ and $\Tilde{x_0} \in p^{-1}(x_0)$, there exists a unique path $\Tilde{f}: I \rightarrow Z$ with $\Tilde{f}(0) = x_0$ and $p \circ \Tilde{f} = f$
+\newline \newline \textbf{Lecture 11}
+\newline \newline \textbf{Definition 11.1} A \textit{map of pairs} $$ f:(X,A) \rightarrow (Y,B)$$ is a map $f: X \rightarrow Y$ such that $f(A) \subset B$
+\newline \newline \textbf{Definition 11.4} The \textit{induced homomorphism} of $f:(X, x_0) \rightarrow (Y, y_0)$ is the map $$f_*:\pi_1(X,x_0) \rightarrow \pi_1(Y, y_0)$$ $[\alpha] \mapsto [f \circ \alpha]$. \newline The induced homomorphism is sometimes called a push-forward.
+\newline \newline (Section on categories and functors but I doubt that'll be examined tbh)
+\newline \newline \textbf{Lecture 14}
+\newline \newline \textbf{Definition 14.2} Let $X,Y$ be spaces with involution. A map $f:X \rightarrow Y$ is called \textit{odd} if $f(-x) = -f(x)$ for all $x \in X$ and \textit{even} if $f(x) = f(-x)$ for all $x \in X$.
+\newline \newline \textbf{Definition 14.5} A map $f: X \rightarrow Y$ is called $\textit{null-homotopic}$ if $f$ is homotopic to a constant map. A pointed map $f:(X,x_0) \rightarrow (Y,y_0)$ is null-homotopic relative to the basepoint if there is a homotopy $f: X \times I \rightarrow Y$ such that $f_0 = f$ and $f_1 = e_{y_0}$, with $f_t(x_0) = y_0$.
+\newline \newline \textbf{Lecture 16}
+\newline \newline \textbf{Definition 16.3} Let $p:\Tilde{X} \rightarrow X$ be a covering and assume that $\Tilde{X}$ and $X$ are path-connected. Then for any $x \in X$, $$deg(p) := |p^{-1}(x)|$$ is called the \textit{degree} of the covering.
+\newline \newline \textbf{Lecture 17}
+\newline \newline \textbf{Definition 17.2} Let $\{(X_\alpha,x_\alpha)\}_\alpha$ be a collection of pointed topological spaces. The \textit{wedge sum} of this collection is defined as $$\bigvee_{\alpha}(X_\alpha,x_\alpha) = \bigsqcup_\alpha X_{\alpha}/(x_\alpha \sim x_\beta),$$ that is, the disjoint union of the $X_\alpha$ with the points $x_\alpha$ all identified.
+\newline \newline \textbf{Definition 17.3} Let $\{G_\alpha\}_\alpha$ be a collection of groups. A \textit{word} on these groups is a finite sequence $g_1...g_m$of the elements $g_i \in G_{\alpha_i}$, and $m$ is the length of the word. The empty word is denoted by $\epsilon$. The product of two words is a concatenation, $$g_1...g_m \ast h_1...h_m = (g_1...g_mh_1...h_m)$$ 
+\newline \newline \textbf{Definition 17.4} A word $g = g_1...g_m$ is called \textit{reduced} if $g_i \not= e_{\alpha_{i}}$ (the unit element of the group $G_{\alpha_i}$) and for any two consecutive letters $g_i, g_i+1, \alpha_i \not= \alpha_{i+1}$ (that is, consecutive letters are not in the same group)
+\newline \newline \textbf{Lecture 21}
+\newline \newline \textbf{Definition 21.5} A \textit{CW complex} is a topological space $X$ that is built up inductively as follows.
+\newline \newline 1) The \textit{zero-skeleton} $X^0$ is a discrete set;
+\newline \newline 2) Given $X^{n-1}$, a collection of closed disks $\{ D_\alpha^n \}$ with $D_\alpha^n \cong B^n$, and $S_\alpha^{n-1} = \partial D_\alpha^n$, with \textit{attaching maps} $$\phi_\alpha:S_\alpha^{n-1} \rightarrow X^{n-1}$$ define $$X^n = (X^{n-1} \sqcup \bigsqcup_\alpha D_\alpha^n)/\sim,$$ where $\sim$ is the equivalence relation $x \sim \phi_\alpha(x)$ for all $x \in S^{n-1}_\alpha$. 
+\newline \newline 3) Define $X = \bigcup_n X^n$, equipped with the \textit{weak topology}: a set $A \subset X$ is open if and only if $A \cap X^n$ is open in $X^n$ for every n.
+\newline \newline \textbf{Lecture 23}
+\newline \newline \textbf{Definition 23.2} A \textit{subcomplex} of a CW complex $X$ is a space $A$ that is the union of cells $e_n^\alpha$ in $X$ such that for every cell it also contains its closure.
+\newline \newline \textbf{Definition 23.4} A topological space is called \textit{normal} if any two disjoint closed subsets have disjoint open neighbourhoods. A topological spaces is called a \textit{Hausdorff} space, if any two distinct points have disjoint open neighbourhoods.
+\newline \newline \textbf{Definition 23.6} A topological space is called \textit{locally contractible} if for any $x$ and open neighbourhood $U$ such that $x \in U \subset X$ there exists an open set $V$ such that $x \in V \subset U$ such that $V$ is contractible.
+\end{document} 
