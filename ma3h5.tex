@@ -1,0 +1,121 @@
+\documentclass[a4paper]{article}
+
+\usepackage{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm,thmtools,xcolor}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+\title{MA3H5 Manifolds}
+\author{Luca Seemungal}
+
+%% BEGIN PREAMBLE
+
+%% Theoremata
+\declaretheoremstyle[
+  headfont=\color{red}\normalfont\bfseries,
+  bodyfont=\color{red}\normalfont\itshape,
+]{thm}
+\declaretheorem[
+  style=thm,
+  name=Theorem,
+]{thm}
+
+%% Lemmata
+\declaretheoremstyle[
+  headfont=\color{black}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont\itshape,
+]{lemma}
+\declaretheorem[
+  style=lemma,
+  name=Lemma,
+]{lemma}
+
+%% Propositions
+\declaretheoremstyle[
+  headfont=\color{gray}\normalfont\bfseries,
+  bodyfont=\color{gray}\normalfont\itshape,
+]{prop}
+\declaretheorem[
+  style=prop,
+  name=Prop.,
+]{prop}
+
+%% Examples
+\declaretheoremstyle[
+  headfont=\color{blue}\normalfont\bfseries,
+  bodyfont=\color{blue}\normalfont\itshape,
+]{eg}
+\declaretheorem[
+  style=eg,
+  name=Example,
+]{eg}
+
+%% Definitions
+\declaretheoremstyle[
+  headfont=\color{green}\normalfont\bfseries,
+  bodyfont=\color{green}\normalfont,
+]{defn}
+\declaretheorem[
+  style=defn,
+  name=Defn.,
+]{defn}
+
+%% Exercises
+\declaretheoremstyle[
+  headfont=\color{pink}\normalfont\bfseries,
+  bodyfont=\color{pink}\normalfont,
+]{ex}
+\declaretheorem[
+  style=ex,
+  name=Exercise,
+]{ex}
+
+%% MACROS
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\integ}[4]{\int_{#1}^{#2}\!{#3}\,\mathrm{d}{#4}}
+\newcommand{\deriv}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
+\newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\oneover}[1]{\frac{1}{#1}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda}
+\newcommand{\s}{\sigma}
+\newcommand{\w}{\wedge}
+\renewcommand{\d}[1]{\mathrm{d}{#1}}
+\renewcommand{\span}{\operatorname{span}}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\inv}{^{-1}}
+%% END PREAMBLE
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Differential Forms in $\R^n$}
+
+\subsection{Exterior Algebra}
+
+If $f:U\to V$ is a linear map then we define its pullback $f^*:\La^rV^*\to\La^rU^*$ by
+$$f^*\b(u_1,\ldots,u_r) = \b(f(u_1),\ldots,f(u_r))$$
+for every $\b\in\La^r U^*$ and every $u_1,\ldots,u_r\in U$.
+
+\begin{prop}
+  $$f^*(\a\w\b) = f^*(\a)\w f^*(\b)$$
+  If $f:U\to V$ and $g:V\to W$ are linear maps then
+  $$(g\circ f)^* = f^*\circ g^*.$$
+  If $f:U\to U$ is a linear map and $\b\in\La^n U^*$ where $n=\dim U$ then 
+  $$f^*\b = (\det f)\b.$$
+\end{prop}
+
+\end{document}
